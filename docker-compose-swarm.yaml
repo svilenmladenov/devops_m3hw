@@ -1,7 +1,7 @@
 version: "3.8"
 services:
     web:
-        image: smaldenov/bgapp-hw3-web
+        image: smladenov/bgapp-hw3-web
         deploy:
             replicas: 3
         ports:
