@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+    web:
+        image: smaldenov/bgapp-hw3-web
+        deploy:
+            replicas: 3
+        ports:
+            - 8080:80
+        volumes:
+            - "/home/vagrant/bgapp/web:/var/www/html:ro"
+            - "/home/vagrant/bgapp/default.conf:/etc/nginx/sites-available/default:ro"
+            - "/home/vagrant/bgapp/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf:ro"
+        networks:
+            - app-network
+        depends_on:
+            - db
+    db:
+        image: smladenov/bgapp-hw3-db
+        networks:
+            - app-network
+        environment:
+            MYSQL_ROOT_PASSWORD: "12345"
+networks:
+    app-network:
