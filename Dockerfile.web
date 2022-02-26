@@ -1,0 +1,5 @@
+FROM ubuntu:18.04
+
+RUN apt update && apt install -y nginx php-fpm php-mysql supervisor
+
+CMD ["/usr/bin/supervisord"]
